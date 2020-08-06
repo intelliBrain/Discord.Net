@@ -40,7 +40,10 @@ namespace _01_basic_ping_bot
         public async Task MainAsync()
         {
             // Tokens should be considered secret data, and never hard-coded.
-            await _client.LoginAsync(TokenType.Bot, Environment.GetEnvironmentVariable("token"));
+            // see /properties/launchSettings.json (which is ignored by .gitignore)
+            var tok = Environment.GetEnvironmentVariable("token");
+
+            await _client.LoginAsync(TokenType.Bot, tok);
             await _client.StartAsync();
 
             // Block the program until it is closed.
